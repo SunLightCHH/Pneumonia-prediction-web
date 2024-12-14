@@ -7,7 +7,7 @@ import os
 import cv2
 
 app = Flask(__name__)
-model = load_model('my_trained_model.h5')  # Load mô hình đã huấn luyện
+model = load_model('model_strengthen_4.h5')  # Load mô hình đã huấn luyện
 
 # Hàm tiền xử lý ảnh trước khi đưa vào mô hình
 def preprocess_image(image_path):
@@ -42,6 +42,6 @@ def index():
             return render_template("index.html", prediction=result, confidence=confidence, img_path=filepath)
 
     return render_template("index.html")
-
+#, host="0.0.0.0", port=int(os.environ.get("PORT", 10000))
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    app.run(debug=True)
